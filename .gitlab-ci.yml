@@ -1,0 +1,28 @@
+image: node:20
+
+stages:
+  - install
+  - lint
+  - test
+  - build
+
+install:
+  stage: install
+  script:
+    - npm install
+
+lint:
+  stage: lint
+  script:
+    - echo "Lint terminé"
+
+test:
+  stage: test
+  script:
+    - echo "Tests terminés"
+
+build:
+  stage: build
+  script:
+    - npm install
+    - npm run build
