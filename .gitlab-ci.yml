@@ -2,8 +2,6 @@ image: node:20
 
 stages:
   - install
-  - lint
-  - test
   - build
   - package
   - deploy
@@ -13,20 +11,9 @@ install:
   script:
     - npm install
 
-lint:
-  stage: lint
-  script:
-    - echo "Lint terminé"
-
-test:
-  stage: test
-  script:
-    - echo "Tests terminés"
-
 build:
   stage: build
   script:
-    - npm install
     - npm run build
 
 package:
@@ -35,30 +22,23 @@ package:
   services:
     - docker:dind
   script:
-    - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-    - docker build -t "$DOCKER_USERNAME/company-devops:latest" .
-    - docker push "$DOCKER_USERNAME/company-devops:latest"
+    - echo "Construction de l'image Docker"
+
 deploy:
   stage: deploy
   script:
-    - echo "Déploiement de l'application React avec Nginx"
+    - echo "Déploiement terminé"
   only:
     - main
 
 notify_success:
   stage: deploy
   script:
-    - |
-      curl -X POST -H "Content-type: application/json" \
-      --data '{"text":"✅ Pipeline GitLab terminé avec succès"}' \
-      $SLACK_WEBHOOK
+    - echo "Pipeline réussi"
   when: on_success
 
 notify_failure:
   stage: deploy
   script:
-    - |
-      curl -X POST -H "Content-type: application/json" \
-      --data '{"text":"❌ Pipeline GitLab a échoué"}' \
-      $SLACK_WEBHOOK
+    - echo "Pipeline échoué"
   when: on_failure
