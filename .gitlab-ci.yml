@@ -5,7 +5,8 @@ stages:
   - lint
   - test
   - build
-
+  - package
+  - deploy
 install:
   stage: install
   script:
@@ -26,3 +27,28 @@ build:
   script:
     - npm install
     - npm run build
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Déploiement de l'application React avec Nginx"
+  only:
+    - main
+
+  notify_success:
+  stage: deploy
+  script:
+    - |
+      curl -X POST -H 'Content-type: application/json' \
+      --data '{"text":"✅ Pipeline GitLab terminé avec succès"}' \
+      $SLACK_WEBHOOK
+  when: on_success
+
+  notify_failure:
+  stage: deploy
+  script:
+    - |
+      curl -X POST -H 'Content-type: application/json' \
+      --data '{"text":"❌ Pipeline GitLab a échoué"}' \
+      $SLACK_WEBHOOK
+  when: on_failure
