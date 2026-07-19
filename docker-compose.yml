@@ -1,0 +1,6 @@
+services:
+  company-devops:
+    build: .
+    container_name: company-devops
+    ports:
+      - "3000:80"
