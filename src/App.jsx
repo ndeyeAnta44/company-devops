@@ -168,7 +168,7 @@ function App() {
 
         <section id="projets" className="section">
           <p className="eyebrow">Projets</p>
-          <h2>Travaux récents</h2>
+          <h2>Travaux récentes</h2>
           <div className="projects-list">
             {PROJECTS.map((p) => (
               <article className="project-card" key={p.id}>
