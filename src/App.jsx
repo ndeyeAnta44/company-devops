@@ -210,7 +210,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <span>© {new Date().getFullYear()} Anta Diaw — Dakar, Sénégal</span>
+        <span>© {new Date().getFullYear()} Anta Diaw — Dakar,Sénégal</span>
       </footer>
     </div>
   )
