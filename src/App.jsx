@@ -119,7 +119,7 @@ function App() {
         </div>
 
         <div className="hero-copy">
-          <p className="eyebrow">Portfolio</p>
+          <p className="eyebrow">PortFolio</p>
           <h1>
             Je construis des systèmes de données
             <br />
@@ -161,7 +161,7 @@ function App() {
           <div className="schema-block">
             <SchemaDiagram />
             <p className="schema-caption">
-              De la donnée brute (HDFS/Hive) aux outils de gestion (Odoo) — je relie les deux mondes.
+              De la donnée brute (HDFS/Hive) aux Outils de gestion (Odoo) — je relie les deux mondes.
             </p>
           </div>
         </section>
